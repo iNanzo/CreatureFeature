@@ -2,26 +2,25 @@
 
 public class Hero extends Creature {
     private String name;
-    private String character;
-    private int gold;
+    private String character; // Class type like "Barbarian", "Wizard"
 
-    public Hero(String name, String character, int hitPoints, int attackPoints) {
-        super(hitPoints, attackPoints, "Hero");
+    public Hero(String creatureType, int hitPoints, int attackPoints, int gold, String name, String character) {
+        super(hitPoints, attackPoints, creatureType);
         this.name = name;
         this.character = character;
-        this.gold = 0;
+        this.setGold(gold); // Now works because setGold() exists in Creature
     }
 
     @Override
     public String toString() {
-        String myReturn = getClass().getSimpleName();
-        myReturn += " [";
-        myReturn += "name=" + name;
-        myReturn += ", character=" + character;
-        myReturn += ", hitPoints=" + getHitPoints();  // Fix: Use getter
-        myReturn += ", attackPoints=" + getAttackPoints();
-        myReturn += ", gold=" + gold;
-        myReturn += ", alive=" + isAlive() + "]";
+        String myReturn = this.getClass().getSimpleName();
+        myReturn += " [creatureType=" + this.getCreatureType();
+        myReturn += ", hitPoints=" + this.getHitPoints();
+        myReturn += ", attackPoints=" + this.getAttackPoints();
+        myReturn += ", gold=" + this.getGold();
+        myReturn += ", name=" + this.name;
+        myReturn += ", character=" + this.character;
+        myReturn += ", alive=" + this.isAlive() + "]";
         return myReturn;
     }
 }
